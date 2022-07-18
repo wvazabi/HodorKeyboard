@@ -4,7 +4,6 @@
 //
 //  Created by Enes Kaya on 18.07.2022.
 //
-
 import UIKit
 
 class KeyboardViewController: UIInputViewController {
@@ -20,6 +19,15 @@ class KeyboardViewController: UIInputViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //HODOR
+        
+        let hodorButton = UIButton(type: UIButton.ButtonType.system)
+        hodorButton.frame = CGRect(x: 150, y: 50, width: 140, height: 120)
+        hodorButton.setBackgroundImage(UIImage(named: "hodor"), for: UIControl.State.normal)
+        hodorButton.addTarget(self, action: #selector(hodorTapped), for: UIControl.Event.touchUpInside)
+        view.addSubview(hodorButton)
+        
+        
         // Perform custom UI setup here
         self.nextKeyboardButton = UIButton(type: .system)
         
@@ -33,6 +41,13 @@ class KeyboardViewController: UIInputViewController {
         
         self.nextKeyboardButton.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
         self.nextKeyboardButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+    }
+    
+    @objc func hodorTapped() {
+            
+        let textProxy = textDocumentProxy as UITextDocumentProxy
+        textProxy.insertText("HODOR!")
+
     }
     
     override func viewWillLayoutSubviews() {
